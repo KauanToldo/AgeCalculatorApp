@@ -20,19 +20,23 @@
   <main>
     <section id="inputs-section">
       <div id="day">
-        <p>DAY</p>
-        <input type="number" name="" id="day-input">
-        <span class="error hidden">Must be a valid day</span>
+        <label id="day-label">DAY</label>
+        <input type="number" name="" id="day-input" placeholder="DD">
+        <span id="day-error-invalid" class="error hidden">Must be a valid day</span>
+        <span id="day-error-empty" class="error hidden">This field is required</span>
+        <span id="day-error-whole" class="error hidden">Must be a valid date</span>
       </div>
       <div id="month">
-        <p>MONTH</p>
-        <input type="number" name="" id="month-input">
-        <span class="error hidden">Must be a valid month</span>
+        <label id="month-label">MONTH</label>
+        <input type="number" name="" id="month-input" placeholder="MM">
+        <span id="year-error-invalid" class="error hidden">Must be a valid month</span>
+        <span id="month-error-empty" class="error hidden">This field is required</span>
       </div>
       <div id="year">
-        <p>YEAR</p>
-        <input type="number" name="" id="day-input">
-        <span class="error hidden">Must in the past</span>
+        <label id="year-label">YEAR</label>
+        <input type="number" name="" id="day-input" placeholder="YYYY">
+        <span id="year-error-invalid" class="error hidden">Must in the past</span>
+        <span id="year-error-empty" class="error hidden">This field is required</span>
       </div>
     </section>
     <div id="break-line">
@@ -57,20 +61,8 @@
   <footer>
     <div class="attribution">
       Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-      Coded by <a href="#">Your Name Here</a>.
+      Coded by <a href="#">ToldoInCode</a>.
     </div>
   </footer>
-  Day
-  DD
-
-  Month
-  MM
-
-  Year
-  YYYY
-
-  -- years
-  -- months
-  -- days
 </body>
 </html>
