@@ -17,7 +17,49 @@
   </style>
 </head>
 <body>
-
+  <main>
+    <section id="inputs-section">
+      <div id="day">
+        <p>DAY</p>
+        <input type="number" name="" id="day-input">
+        <span class="error hidden">Must be a valid day</span>
+      </div>
+      <div id="month">
+        <p>MONTH</p>
+        <input type="number" name="" id="month-input">
+        <span class="error hidden">Must be a valid month</span>
+      </div>
+      <div id="year">
+        <p>YEAR</p>
+        <input type="number" name="" id="day-input">
+        <span class="error hidden">Must in the past</span>
+      </div>
+    </section>
+    <div id="break-line">
+      <div id="line"></div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="46" height="44" viewBox="0 0 46 44"><g fill="none" stroke="#FFF" stroke-width="2"><path d="M1 22.019C8.333 21.686 23 25.616 23 44M23 44V0M45 22.019C37.667 21.686 23 25.616 23 44"/></g></svg>
+    </div>
+    <section id="result-section">
+      <div class="result" id="result-years">
+        <span class="result-area" id="years">--</span>
+        <h1>years</h1>
+      </div>
+      <div class="result" id="result-months">
+        <span class="result-area" id="months">--</span>
+        <h1>months</h1>
+      </div>
+      <div class="result" id="result-days">
+        <span class="result-area" id="days">--</span>
+        <h1>days</h1>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+      Coded by <a href="#">Your Name Here</a>.
+    </div>
+  </footer>
   Day
   DD
 
@@ -30,10 +72,5 @@
   -- years
   -- months
   -- days
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
 </body>
 </html>
