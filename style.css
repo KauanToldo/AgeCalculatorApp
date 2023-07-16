@@ -79,8 +79,17 @@ input:focus {
 }
 
 .error {
+    display: block !important;
     font-size: 8px;
     color: var(--Light-red);
+}
+
+.errorInput {
+    border-color: var(--Light-red) !important;
+}
+
+.errorLabel {
+    color: var(--Light-red) !important;
 }
 
 .hidden {
@@ -172,5 +181,9 @@ input:focus {
     .result {
         gap: 15px;
         line-height: 80px;
+    }
+
+    .error {
+        font-size: 12px;
     }
 }
