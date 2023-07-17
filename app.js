@@ -7,8 +7,6 @@ const yearResultArea = document.querySelector("#years")
 const monthResultArea = document.querySelector("#months")
 const dayResultArea = document.querySelector("#days")
 
-
-
 // LABELS 
 
 const dayLabel = document.querySelector("#day-label")
@@ -80,8 +78,12 @@ function countAge(date1, date2) {
         }
     }
 
+    if (dayNow < dayUser && monthNow == monthUser) {
+        years -= 1
+        months = 11
+    }
+
     if (dayNow < dayUser) {
-        months -= 1
         if (monthsDays[monthNow + 1] == 31) {
             for(i = dayUser; i > dayNow; i--) {
                 days += 1
@@ -112,7 +114,6 @@ function verifyDayEmpty() {
         dayErrorEmpty.classList.add("error") 
         dayInput.classList.add("errorInput")
         dayLabel.classList.add("errorLabel")
-        verifyMonthEmpty()
     } else {
         dayErrorEmpty.classList.remove("error") 
         dayInput.classList.remove("errorInput")
@@ -126,7 +127,6 @@ function verifyMonthEmpty() {
         monthErrorEmpty.classList.add("error")
         monthInput.classList.add("errorInput")
         monthLabel.classList.add("errorLabel")
-        verifyYearEmpty()
     } else {
         monthErrorEmpty.classList.remove('error')
         monthInput.classList.remove('errorInput')
@@ -144,21 +144,69 @@ function verifyYearEmpty() {
         yearErrorEmpty.classList.remove("error")
         yearInput.classList.remove("errorInput")
         yearLabel.classList.remove("errorLabel")
-        console.log('passou')
+        verifyMonthValid()
     }
 }
 
-button.addEventListener("click", () => {
-    const Age = countAge(DateNow, DateUser())
-    yearResultArea.innerHTML = Age.year
-    monthResultArea.innerHTML = Age.month
-    dayResultArea.innerHTML = Age.day
+function verifyMonthValid() {
+    if (monthInput.value > 12) {
+        monthErrorInvalid.classList.add("error")
+        monthInput.classList.add("errorInput")
+        monthLabel.classList.add("errorLabel")
+    } else {
+        monthErrorInvalid.classList.remove('error')
+        monthInput.classList.remove('errorInput')
+        monthLabel.classList.remove('errorLabel')
+        verifyYearValid()
+    }   
 }
-)
 
+function verifyYearValid() {
+    if (yearInput.value > DateNow.getFullYear()) {
+        yearErrorInvalid.classList.add("error")
+        yearInput.classList.add("errorInput")
+        yearLabel.classList.add("errorLabel")
+    } else if (yearInput.value == DateNow.getFullYear() && monthInput.value > DateNow.getMonth() + 1) {
+        monthErrorInvalid.classList.add("error")
+        monthInput.classList.add("errorInput")
+        monthLabel.classList.add("errorLabel")
+    } else if (yearInput.value == DateNow.getFullYear() && monthInput.value == DateNow.getMonth() + 1 && dayInput.value > DateNow.getDate()) {
+        dayErrorInvalid.classList.add("error") 
+        dayInput.classList.add("errorInput")
+        dayLabel.classList.add("errorLabel")
+    }
+    else {
+        yearErrorInvalid.classList.remove("error")
+        yearInput.classList.remove("errorInput")
+        yearLabel.classList.remove("errorLabel")
+        monthErrorInvalid.classList.remove('error')
+        monthInput.classList.remove('errorInput')
+        monthLabel.classList.remove('errorLabel')
+        dayErrorInvalid.classList.remove("error") 
+        dayInput.classList.remove("errorInput")
+        dayLabel.classList.remove("errorLabel")
+        verifyDayValid(DateUser())
+    }
+}
 
+function verifyDayValid(dateuser) {
+    let newDate1 = new Date(dateuser)
+    let monthUser = newDate1.getMonth()
+    console.log(monthUser)
+    if (dayInput.value > monthsDays[monthUser]) {
+        dayErrorWhole.classList.add("error") 
+        dayInput.classList.add("errorInput")
+        dayLabel.classList.add("errorLabel")
+        console.log(dayInput.value, monthsDays[monthUser])
+    } else {
+        dayErrorWhole.classList.remove("error") 
+        dayInput.classList.remove("errorInput")
+        dayLabel.classList.remove("errorLabel")
+        const Age = countAge(DateNow, DateUser())
+        yearResultArea.innerHTML = Age.year
+        monthResultArea.innerHTML = Age.month
+        dayResultArea.innerHTML = Age.day
+    }
+}
 
-
-
-
-
+button.addEventListener("click", () => { verifyDayEmpty() } )
